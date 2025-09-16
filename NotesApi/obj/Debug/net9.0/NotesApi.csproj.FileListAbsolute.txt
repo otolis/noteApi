@@ -1,0 +1,8 @@
+C:\Users\t.lagonikas\Desktop\repos\noteApi\NotesApi\obj\Debug\net9.0\NotesApi.csproj.AssemblyReference.cache
+C:\Users\t.lagonikas\Desktop\repos\noteApi\NotesApi\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\t.lagonikas\Desktop\repos\noteApi\NotesApi\obj\Debug\net9.0\NotesApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\t.lagonikas\Desktop\repos\noteApi\NotesApi\obj\Debug\net9.0\NotesApi.AssemblyInfoInputs.cache
+C:\Users\t.lagonikas\Desktop\repos\noteApi\NotesApi\obj\Debug\net9.0\NotesApi.AssemblyInfo.cs
+C:\Users\t.lagonikas\Desktop\repos\noteApi\NotesApi\obj\Debug\net9.0\NotesApi.csproj.CoreCompileInputs.cache
+C:\Users\t.lagonikas\Desktop\repos\noteApi\NotesApi\obj\Debug\net9.0\NotesApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\t.lagonikas\Desktop\repos\noteApi\NotesApi\obj\Debug\net9.0\NotesApi.sourcelink.json
