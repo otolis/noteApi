@@ -1,14 +1,18 @@
 using Microsoft.EntityFrameworkCore;
 using NotesApi.Data;
 using NotesApi.Models;
+using System.Linq;
 
-var builder = WebApplication.CreateBuilder(args);
+
 
 //sql lite sindesi me vasi dedomenon
+var builder = WebApplication.CreateBuilder(args);
+
+
 builder.Services.AddDbContext<AppDb>(opt =>
     opt.UseSqlite("Data Source=notes.db"));
 
-var app = WebApplication.Create();
+var app = builder.Build();
 
 
 using (var scope = app.Services.CreateScope())
@@ -17,28 +21,30 @@ using (var scope = app.Services.CreateScope())
     db.Database.Migrate();
 }
 //lista me anazitisi kai selidopoihsh
-app.MapGet("/notes", async (AppDb db, string? q, int page=1, int pageSize=10)=>
+app.MapGet("/notes", async (AppDb db, string? q, int page = 1, int pageSize = 10) =>
 {
     var query = db.Notes.AsQueryable();
 
     if (!string.IsNullOrWhiteSpace(q))
     {
-        query = query.Where(n => n.Title.Contains(q) || n.Content.Contains(q));
-    }
+        
+        query = query.Where(n =>
+            n.Title.Contains(q!) ||
+            (n.Content ?? "").Contains(q!)
+        );
 
-    var totalItems = await query.CountAsync();
-    var totalPages = (int)Math.Ceiling(totalItems / (double)pageSize);
+        
+    }
 
     var total = await query.CountAsync();
     var items = await query
-        .orderbyDescending(n => n.CreatedAt)
+        .OrderByDescending(n => n.CreatedAt) 
         .Skip((page - 1) * pageSize)
         .Take(pageSize)
         .ToListAsync();
 
     return Results.Ok(new { total, page, pageSize, items });
 });
-
 //get by id
 app.MapGet("/notes/{id}", async (AppDb db, int id) =>
 {
